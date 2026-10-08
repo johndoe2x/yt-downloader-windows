@@ -369,7 +369,7 @@ Partial Class Form1
         }
         If h.Duration <> "" Then
             Dim lblDur As New Label() With {
-                .Text = h.Duration,
+                .Text = NormalizeDuration(h.Duration),
                 .AutoSize = True,
                 .Font = New Font("Segoe UI", 7.5, FontStyle.Bold),
                 .ForeColor = Color.White,

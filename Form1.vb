@@ -553,7 +553,7 @@ Public Class Form1
                 If entry.IsInstagram Then entry.Title = "Instagram · " & entry.Title.Replace(" · NA", "")
                 If entry.Title.Length > 90 Then entry.Title = entry.Title.Substring(0, 87) & "…"
             End If
-            If lines.Length >= 2 AndAlso lines(1).Trim() <> "NA" Then entry.Duration = lines(1).Trim()
+            If lines.Length >= 2 AndAlso lines(1).Trim() <> "NA" Then entry.Duration = NormalizeDuration(lines(1))
             If entry.IsInstagram AndAlso lines.Length >= 3 AndAlso lines(2).StartsWith("http") Then
                 entry.ThumbUrl = lines(2).Trim()
             End If
@@ -1556,6 +1556,17 @@ Public Class Form1
         Catch
             Return ""
         End Try
+    End Function
+
+    ' yt-dlp prints a clip under a minute as bare seconds ("19", sometimes "19.4").
+    ' Show it as m:ss like every longer duration. Anything with a colon is left alone.
+    Friend Shared Function NormalizeDuration(raw As String) As String
+        Dim t = If(raw, "").Trim()
+        If t = "" OrElse t.Contains(":") Then Return t
+        Dim secs As Double
+        If Not Double.TryParse(t, Globalization.NumberStyles.Float, Globalization.CultureInfo.InvariantCulture, secs) Then Return t
+        Dim whole = CInt(Math.Floor(secs))
+        Return $"{whole \ 60}:{whole Mod 60:00}"
     End Function
 
     Private Function FormatBytes(bytes As Long) As String
