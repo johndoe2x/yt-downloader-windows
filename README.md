@@ -16,8 +16,9 @@ Download YouTube videos in 4K, 1080p or 720p, save YouTube as MP3 or M4A audio, 
 
 ---
 
-<!-- Screenshot: save one as docs/screenshot.png and uncomment the line below. -->
-<!-- ![YT Downloader — YouTube and Instagram video downloader for Windows, dark mode](docs/screenshot.png) -->
+<p align="center">
+  <img src="docs/screenshot.png" alt="YT Downloader — free YouTube and Instagram video downloader for Windows, showing the download queue with a finished video" width="760">
+</p>
 
 ## Why this app?
 
