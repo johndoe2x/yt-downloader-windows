@@ -1,0 +1,14 @@
+# Build output (also holds the 100MB+ yt-dlp / ffmpeg / deno binaries)
+bin/
+obj/
+*.user
+.vs/
+
+# Private dev notes - kept local
+CLAUDE.md
+SESSION_*.md
+todo.md
+
+# Downloaded tools / cookies, if ever placed in the source folder
+*.exe
+cookies*.txt
